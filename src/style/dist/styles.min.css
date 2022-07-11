@@ -1,0 +1,116 @@
+.container h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 12px;
+}
+.container .input {
+  position: relative;
+  display: flex;
+  width: 80%;
+  margin: auto;
+  margin-top: 18px;
+}
+.container .input .input__box {
+  width: 100%;
+  border-radius: 50px;
+  font-size: 1.8rem;
+  padding: 20px 30px;
+  border: none;
+  outline: none;
+  transition: 0.2s;
+}
+.container .input .input__box:focus {
+  outline: 2px solid #0ea5e9;
+  box-shadow: 4px 4px 20px rgba(14, 165, 233, 0.2);
+}
+.container .input .input__submit {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  right: 0;
+  margin: 2px;
+  border: none;
+  background-color: #0ea5e9;
+  color: #fff;
+  font-size: 1.4rem;
+  transition: 0.2s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+.container .input .input__submit:hover {
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+}
+.container .todos {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  margin-top: 2em;
+  color: #fff;
+}
+.container .todos .todos__list {
+  list-style: none;
+}
+.container .todos .todos__list .todos__element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 84px;
+  border-radius: 8px;
+  margin: 18px 0;
+  background-color: #161c23;
+  font-size: 2rem;
+  overflow: hidden;
+}
+.container .todos .todos__list .todos__element .todo__single {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.container .todos .todos__list .todos__element .todo__single .todo__single-text {
+  font-size: 2rem;
+  font-weight: 600;
+  max-width: 80%;
+  text-align: center;
+}
+.container .todos .todos__list .todos__element .todo__single .todo__single-text.checked {
+  text-decoration: line-through;
+}
+.container .todos .todos__list .todos__element .todo__single .todos__single-input-edit {
+  outline: none;
+  background: none;
+  background-color: #0d1117;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 12px;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 600;
+  color: #fff;
+  max-width: 100%;
+}
+.container .todos .todos__list .todos__element .todo__single .todo__single-icons {
+  padding-right: 10px;
+}
+.container .todos .todos__list .todos__element .todo__single .todo__single-icons .todo__single-icon {
+  margin: 0 4px;
+  cursor: pointer;
+}
+.container .todos .todos__list .todos__element .todo__single .todo__single-icons .todo__single-icon.delete:hover {
+  color: red;
+}
+.container .todos .todos__list .todos__element .todo__single .todo__single-icons .todo__single-icon.edit:hover {
+  color: orange;
+}
+.container .todos .todos__list .todos__element .todo__single .todo__single-icons .todo__single-icon.check:hover {
+  color: green;
+}
+.container .todos .todos__list .todos__element .todo__single .todo__single-icons .todo__single-icon.checked {
+  color: green;
+}
+.container .todos .todos__list .todos__element .todo__single .todo__single-icons .todo__single-icon.checked:hover {
+  color: greenyellow;
+}/*# sourceMappingURL=styles.min.css.map */
