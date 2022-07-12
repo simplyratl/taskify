@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { ToDo } from "../model";
 import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
 import { IoCheckmarkOutline } from "react-icons/io5";
+import { Draggable } from "react-beautiful-dnd";
 import ToDoList from "./ToDoList";
 
 interface Props {
@@ -43,39 +44,51 @@ const SingleToDo: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
     }, [editMode]);
 
     return (
-        <li className="todos__element" key={index}>
-            <form className="todo__single" onSubmit={(e) => handleEdit(e, todo.id)}>
-                <div className="empty"></div>
+        <Draggable draggableId={todo.id.toString()} index={index}>
+            {(provided) => (
+                <li
+                    className="todos__element"
+                    key={index}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    ref={provided.innerRef}
+                >
+                    <form className="todo__single" onSubmit={(e) => handleEdit(e, todo.id)}>
+                        <div className="empty"></div>
 
-                {editMode ? (
-                    <input
-                        value={editText}
-                        className="todos__single-input-edit"
-                        onChange={(e) => setEditText(e.target.value)}
-                        ref={inputRef}
-                    />
-                ) : (
-                    <span className={`todo__single-text ${todo.isDone && "checked"}`}>{todo.todo}</span>
-                )}
+                        {editMode ? (
+                            <input
+                                value={editText}
+                                className="todos__single-input-edit"
+                                onChange={(e) => setEditText(e.target.value)}
+                                ref={inputRef}
+                            />
+                        ) : (
+                            <span className={`todo__single-text ${todo.isDone && "checked"}`}>
+                                {todo.todo}
+                            </span>
+                        )}
 
-                <div className="todo__single-icons">
-                    <span className="todo__single-icon delete" onClick={() => handleDelete(todo.id)}>
-                        <MdOutlineDelete />
-                    </span>
+                        <div className="todo__single-icons">
+                            <span className="todo__single-icon delete" onClick={() => handleDelete(todo.id)}>
+                                <MdOutlineDelete />
+                            </span>
 
-                    <span className="todo__single-icon edit" onClick={() => setEditMode(!editMode)}>
-                        <MdOutlineEdit />
-                    </span>
+                            <span className="todo__single-icon edit" onClick={() => setEditMode(!editMode)}>
+                                <MdOutlineEdit />
+                            </span>
 
-                    <span
-                        className={`todo__single-icon check ${todo.isDone && "checked"}`}
-                        onClick={() => handleDone(todo.id)}
-                    >
-                        <IoCheckmarkOutline />
-                    </span>
-                </div>
-            </form>
-        </li>
+                            <span
+                                className={`todo__single-icon check ${todo.isDone && "checked"}`}
+                                onClick={() => handleDone(todo.id)}
+                            >
+                                <IoCheckmarkOutline />
+                            </span>
+                        </div>
+                    </form>
+                </li>
+            )}
+        </Draggable>
     );
 };
 

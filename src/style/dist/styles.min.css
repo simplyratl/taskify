@@ -44,14 +44,38 @@
 }
 .container .todos {
   display: flex;
-  flex-direction: column;
   width: 80%;
   margin: auto;
   margin-top: 2em;
   color: #fff;
 }
 .container .todos .todos__list {
+  flex: 1;
   list-style: none;
+  background-color: #161c23;
+  padding: 8px;
+  border-radius: 8px;
+}
+.container .todos .todos__list.done {
+  margin-left: 12px;
+  flex: 1;
+}
+.container .todos .todos__list.done .todos__list-heading {
+  color: greenyellow;
+}
+.container .todos .todos__list.done .todos__element {
+  background-color: #0ea5e9;
+}
+.container .todos .todos__list.dragactive {
+  background-color: #283544;
+}
+.container .todos .todos__list.dragcomplete {
+  background-color: #2a3542;
+}
+.container .todos .todos__list .todos__list-heading {
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-left: 8px;
 }
 .container .todos .todos__list .todos__element {
   display: flex;
@@ -61,9 +85,15 @@
   height: 84px;
   border-radius: 8px;
   margin: 18px 0;
-  background-color: #161c23;
+  background-color: #2a3542;
   font-size: 2rem;
   overflow: hidden;
+  cursor: -webkit-grab;
+  cursor: grab;
+  transition: 0.2s;
+}
+.container .todos .todos__list .todos__element:hover {
+  transform: scale(1.02);
 }
 .container .todos .todos__list .todos__element .todo__single {
   width: 100%;
@@ -75,6 +105,10 @@
   font-weight: 600;
   max-width: 80%;
   text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .container .todos .todos__list .todos__element .todo__single .todo__single-text.checked {
   text-decoration: line-through;
